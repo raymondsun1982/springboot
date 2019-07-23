@@ -8,9 +8,6 @@ import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
  * Description
- *
- * @author fxb
- * @date 2018-09-03
  */
 public class MyAbstractRoutingDataSource extends AbstractRoutingDataSource {
 
