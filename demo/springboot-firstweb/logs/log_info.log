@@ -1,0 +1,3 @@
+2019-07-21 09:19:01.701 [main] INFO  com.raymond.SpringBootApplication - Starting SpringBootApplication on raymonddeMacBook-Pro.local with PID 5358 (/raymond-sts-workspace/demo/springboot-firstweb/target/classes started by mac in /raymond-sts-workspace/demo/springboot-firstweb)
+2019-07-21 09:19:01.701 [main] INFO  com.raymond.SpringBootApplication - No active profile set, falling back to default profiles: default
+2019-07-21 09:19:34.839 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8090 (http)

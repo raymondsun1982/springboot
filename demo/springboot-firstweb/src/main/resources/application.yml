@@ -1,0 +1,103 @@
+server:
+  port: 8090
+  tomcat:
+    max-threads: 400
+    accesslog:
+      enabled: true
+      directory:
+    accept-count: 200
+    min-spare-threads: 8
+    
+spring:
+  kafka:
+    producer:
+      bootstrap-servers: 127.0.0.1:9092
+      retries: 0
+      batch-size: 4096
+      buffer-memory: 40960
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: raymond-test
+      enable-auto-commit: true
+      auto-offset-reset: earliest
+      auto-commit-interval: 1000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    druid:
+#      # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+#        filters: stat,wall
+#        #初始化大小
+#        initial-size: 1
+#        min-idle: 1
+#        max-active: 20
+#        #最大等待连接超时时间
+#        max-wait: 60000
+#        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+#        time-between-eviction-runs-millis: 60000
+#        # 配置一个连接在池中最小生存的时间，单位是毫秒
+#        min-evictable-idle-time-millis: 300000
+#        # 校验SQL，Oracle配置 spring.datasource.validationQuery=SELECT 1 FROM DUAL，如果不配validationQuery项，则下面三项配置无用
+#        validation-query: SELECT 'x'
+#        test-while-idle: true
+#        test-on-borrow: false
+#        test-on-return: false
+#        # 打开PSCache，并且指定每个连接上PSCache的大小
+#        #是否缓存preparedStatement，也就是PSCache。PSCache对支持游标的数据库性能提升巨大，比如说oracle。在mysql下建议关闭。
+#        pool-prepared-statements: false
+#        max-pool-prepared-statement-per-connection-size: 20
+#        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+#        connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+#        # 合并多个DruidDataSource的监控数据
+#        use-global-data-source-stat: true
+#        filter:
+#          config:
+#            enabled: true
+#          stat:
+#          #日志输出执行慢的sql
+#            log-slow-sql: true
+#          commons-log:
+#            #data-source-log-enabled: true
+#            statement-log-enabled: true
+#            statement-executable-sql-log-enable: true
+
+mysql: 
+  datasource:
+    #读库数目
+    num: 1
+    type-aliases-package: com.raymond.entity
+    mapper-locations: classpath:/mappers/*.xml
+    config-location: classpath:/mybatis-config.xml
+    write:
+      url: jdbc:mysql://localhost:3306/primary_database?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver
+    read:
+      url: jdbc:mysql://localhost:3306/primary_databases?useUnicode=true&characterEncoding=utf-8&useSSL=true
+      username: root
+      password: root
+      driver-class-name: com.mysql.jdbc.Driver            
+       
+       
+  
+        
+        
+        
+        
+        
+            
+            
+#mybatis:
+#  mapper-locations: classpath:mappers/*.xml
+#  type-aliases-package: entity
+  
+#logging:
+#  path: ./logs/
+#  level:
+#    root: info
+#  config: classpath:logs/logback-spring.xml
+  
