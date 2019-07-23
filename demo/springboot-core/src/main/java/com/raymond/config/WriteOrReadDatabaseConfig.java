@@ -22,9 +22,6 @@ import java.util.Map;
 
 /**
  * Description
- *
- * @author fxb
- * @date 2018-09-03
  */
 @Configuration
 @MapperScan(basePackages = "com.raymond.dao", sqlSessionFactoryRef = "sqlSessionFactory")
